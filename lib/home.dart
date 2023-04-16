@@ -66,8 +66,20 @@ class _HomePageState extends State<HomePage> {
   Future<String?> openDialog() => showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
-            title: const Text("Enter Task"),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            title: Text(
+              "Enter Task",
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
             content: TextField(
+              autofocus: true,
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.black, width: 2.0),
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+              ),
               controller: fieldCtrl,
             ),
             actions: [
@@ -77,6 +89,10 @@ class _HomePageState extends State<HomePage> {
                   Navigator.of(context).pop(fieldCtrl.text);
                   fieldCtrl.clear();
                 },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                ),
               ),
             ],
           ));

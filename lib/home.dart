@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                       return widgetList[index];
                     },
                   )),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () async {

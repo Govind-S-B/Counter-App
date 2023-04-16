@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'counter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,9 +42,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           var name = await openDialog();
           if (name == null || name.isEmpty) return;
-          // make a counter widget with given name
-          // add widget to list
-          // set state to reload new list on screen
+          widgetList.add(CounterWidget(task: name));
+          setState(() {});
         },
       ),
     );

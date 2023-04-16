@@ -28,28 +28,39 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("CounterApp"),
-      ),
-      body: Container(
-          child: widgetList.isEmpty
-              ? const Text("Add a new task to count")
-              : ListView.builder(
-                  itemCount: widgetList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return widgetList[index];
-                  },
-                )),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () async {
-          var name = await openDialog();
-          if (name == null || name.isEmpty) return;
-          widgetList.add(CounterWidget(task: name));
-          setState(() {});
-        },
-      ),
-    );
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Text(
+            "Counter App",
+            style: Theme.of(context).textTheme.headline5,
+          ),
+        ),
+        body: Container(
+            child: widgetList.isEmpty
+                ? Center(
+                    child: Text(
+                    "Add a new task to count",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ))
+                : ListView.builder(
+                    itemCount: widgetList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return widgetList[index];
+                    },
+                  )),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () async {
+            var name = await openDialog();
+            if (name == null || name.isEmpty) return;
+            widgetList.add(CounterWidget(task: name));
+            setState(() {});
+          },
+          backgroundColor: Colors.black,
+        ),
+        backgroundColor: Colors.white);
   }
 
   Future<String?> openDialog() => showDialog<String>(

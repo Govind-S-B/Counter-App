@@ -36,7 +36,12 @@ class _HomePageState extends State<HomePage> {
       body: Container(
           child: widgetList.isEmpty
               ? Text("Add a new task to count")
-              : Text("scrollable list of counter widgets")),
+              : ListView.builder(
+                  itemCount: widgetList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return widgetList[index];
+                  },
+                )),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {

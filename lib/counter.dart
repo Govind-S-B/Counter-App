@@ -22,7 +22,7 @@ class _CounterWidgetState extends State<CounterWidget> {
           borderRadius: BorderRadius.circular(5)),
       child: Row(
         children: [
-          Expanded(child: Text("${widget.task}")),
+          Expanded(child: Text(widget.task)),
           ElevatedButton(
             onPressed: () {
               count++;

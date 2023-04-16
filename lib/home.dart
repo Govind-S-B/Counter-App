@@ -14,14 +14,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fieldCtrl = TextEditingController();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     fieldCtrl.dispose();
 
     super.dispose();
@@ -31,11 +29,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CounterApp"),
+        title: const Text("CounterApp"),
       ),
       body: Container(
           child: widgetList.isEmpty
-              ? Text("Add a new task to count")
+              ? const Text("Add a new task to count")
               : ListView.builder(
                   itemCount: widgetList.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -43,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   },
                 )),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () async {
           var name = await openDialog();
           if (name == null || name.isEmpty) return;
@@ -57,15 +55,16 @@ class _HomePageState extends State<HomePage> {
   Future<String?> openDialog() => showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
-            title: Text("Enter Task"),
+            title: const Text("Enter Task"),
             content: TextField(
               controller: fieldCtrl,
             ),
             actions: [
               TextButton(
-                child: Text("Add"),
+                child: const Text("Add"),
                 onPressed: () {
                   Navigator.of(context).pop(fieldCtrl.text);
+                  fieldCtrl.clear();
                 },
               ),
             ],
